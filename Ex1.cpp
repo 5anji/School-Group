@@ -1,6 +1,12 @@
 #include <iostream>
 using namespace std;
 
+bool isConsonant(char ch) {
+  ch = toupper(ch); 
+
+  return !(ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' || ch == 'Y') && ch >= 65 && ch <= 90; 
+} 
+
 void option_a (string word) {
 	cout << "Length of word is: " << word.length() << endl;
 }
@@ -17,25 +23,8 @@ void option_b (string word) {
 
 void option_c (string word) {
 	int count = 0;
-	char c;
 
-	for (int i = 0; i < word.length(); i++) {
-		c = toupper(word[i]);
-		
-		switch (c) {
-		case 'A':
-		case 'E':
-		case 'I':
-		case 'O':
-		case 'U':
-		case 'Y':
-			break;
-		
-		default:
-			count++;
-			break;
-		}
-	}
+	for (int i = 0; i < word.length(); i++) if (isConsonant(word[i])) count++;
 
 	cout << "Count of consonants is: " << count << endl;
 }
